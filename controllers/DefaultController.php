@@ -16,9 +16,7 @@ class DefaultController extends AppController
 
     public function index()
     {
-        $text = 'Hello there 👋';
-
-        $this->render('index', ['text' => $text]);
+        $this->render('index');
     }
 
     public function login()
@@ -73,10 +71,13 @@ class DefaultController extends AppController
             $mapper->setUser($user);
 
             $this->render('login', [
-                'message' => ['You have been successful registrated! Please login.']
+                'message' => ['You have been successful registered! Please login.']
                 ]);
         }
 
         $this->render('register');
     }
 }
+
+
+
