@@ -1,3 +1,6 @@
 <?php
 
-echo "Hello world!";
+require_once('Routing.php');
+
+$routing = new Routing();
+$routing->run();
