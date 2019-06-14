@@ -73,7 +73,7 @@ class DefaultController extends AppController
             $mapper->setUser($user);
 
             $this->render('login', [
-                'message' => ['You have been successful registrated! Please login.']
+                'message' => ['You have been successful registered! Please login.']
                 ]);
         }
 

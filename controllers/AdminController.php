@@ -19,12 +19,13 @@ class AdminController extends AppController
 
     public function users(): void
     {
-        $user = new UserMapper();
+            $user = new UserMapper();
 
-        header('Content-type: application/json');
-        http_response_code(200);
+            header('Content-type: application/json');
+            http_response_code(200);
 
-        echo $user->getUsers() ? json_encode($user->getUsers()) : '';
+            echo $user->getUsers() ? json_encode($user->getUsers()) : '';
+
     }
 
     public function userDelete(): void

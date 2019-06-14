@@ -4,7 +4,7 @@ $(document).ready(function(){
 
 
 function getUsers() {
-    const apiUrl = "http://localhost:8002";
+    const apiUrl = "http://localhost";
     const $list = $('.users-list');
 
     $.ajax({
@@ -37,7 +37,7 @@ function deleteUser(id) {
         return;
     }
 
-    const apiUrl = "http://localhost:8002";
+    const apiUrl = "http://localhost";
 
     $.ajax({
         url : apiUrl + '/?page=admin_delete_user',

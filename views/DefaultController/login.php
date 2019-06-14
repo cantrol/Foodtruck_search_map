@@ -6,7 +6,7 @@
 <body>
 
 <div class="container">
-    <div clas="row">
+    <div class="row">
         <div class="col-sm-6 offset-sm-3">
             <h1 class="panel-header">LOGIN</h1>
             <hr>
@@ -34,6 +34,10 @@
                     </div>
                 </div>
                 <input type="submit" value="Sign in" class="btn btn-primary btn-lg float-right" />
+                <p>
+                    Not yet a member? <a href="?page=register"> Register</a> <br/>
+                    Continue without logging in <a href="?page=index"> Return to main page</a>
+                </p>
             </form>
         </div>
     </div>

@@ -2,7 +2,7 @@
 
 require_once 'controllers/DefaultController.php';
 require_once 'controllers/UploadController.php';
-require_once 'controllers/PlayerController.php';
+require_once 'controllers/MapController.php';
 require_once 'controllers/AdminController.php';
 require_once 'controllers/AdminController.php';
 
@@ -33,9 +33,9 @@ class Routing
                 'controller' => 'UploadController',
                 'action' => 'upload'
             ],
-            'player' => [
-                'controller' => 'PlayerController',
-                'action' => 'player'
+            'map' => [
+                'controller' => 'MapController',
+                'action' => 'map'
             ],
             'admin' => [
                 'controller' => 'AdminController',
@@ -55,7 +55,7 @@ class Routing
     public function run()
     {
         $page = isset($_GET['page'])
-            && isset($this->routes[$_GET['page']]) ? $_GET['page'] : 'login';
+            && isset($this->routes[$_GET['page']]) ? $_GET['page'] : 'index';
 
         if ($this->routes[$page]) {
             $class = $this->routes[$page]['controller'];

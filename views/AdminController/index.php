@@ -33,6 +33,7 @@
         </table>
 
         <button class="btn btn-dark btn-lg" type="button" onclick="getUsers()">Get all users</button>
+        <button class="btn btn-dark btn-lg" type="button" onclick="window.location = '?page=index'">Exit</button>
     </div>
 </div>
 
