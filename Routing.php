@@ -55,7 +55,7 @@ class Routing
     public function run()
     {
         $page = isset($_GET['page'])
-            && isset($this->routes[$_GET['page']]) ? $_GET['page'] : 'index';
+            && isset($this->routes[$_GET['page']]) ? $_GET['page'] : 'login';
 
         if ($this->routes[$page]) {
             $class = $this->routes[$page]['controller'];

@@ -6,7 +6,7 @@
 <body>
 
 <div class="container">
-    <div class="row">
+    <div clas="row">
         <div class="col-sm-6 offset-sm-3">
             <h1 class="panel-header">REGISTER</h1>
             <hr>
