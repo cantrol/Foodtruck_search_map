@@ -1,4 +1,5 @@
 <?php
+require_once 'Parameters.php';
 
 class MapController extends AppController
 {
@@ -9,8 +10,6 @@ class MapController extends AppController
 
     public function map()
     {
-        $this->render('map');
+        $this->render('map',['API' => GOOGLEAPI]);
     }
-
-
 }
