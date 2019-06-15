@@ -37,6 +37,10 @@ class Routing
                 'controller' => 'MapController',
                 'action' => 'map'
             ],
+            'add_location' => [
+                'controller' => 'MapController',
+                'action' => "add_location"
+            ],
             'admin' => [
                 'controller' => 'AdminController',
                 'action' => 'index'

@@ -62,6 +62,7 @@ class DefaultController extends AppController
     {
         $mapper = new UserMapper();
         $user = null;
+        $place_added = false;
 
         if ($this->isPost()) {
             $user = new User(
@@ -72,11 +73,12 @@ class DefaultController extends AppController
             );
             $mapper->setUser($user);
 
+            $place_added = true;
             $this->render('login', [
                 'message' => ['You have been successful registered! Please login.']
                 ]);
         }
 
-        $this->render('register');
+        if(!$place_added) $this->render('register');
     }
 }
