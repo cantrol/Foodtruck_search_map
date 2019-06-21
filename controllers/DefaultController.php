@@ -38,8 +38,9 @@ class DefaultController extends AppController
             if ($user->getPassword() !== md5($_POST['password'])) {
                 return $this->render('login', ['message' => ['Wrong password']]);
             } else {
-                $_SESSION["id"] = $user->getEmail();
+                $_SESSION["email"] = $user->getEmail();
                 $_SESSION["role"] = $user->getRole();
+                $_SESSION['id'] = $user->getId();
 
                 $url = "http://$_SERVER[HTTP_HOST]/";
                 header("Location: {$url}?page=index");
@@ -69,10 +70,11 @@ class DefaultController extends AppController
               $_POST['name'],
               $_POST['surname'],
               $_POST['email'],
-              md5($_POST['password'])
+              md5($_POST['password']),
+              $_POST['ID'] = 0,
+              $_POST['role']="ROLE_USER"
             );
             $mapper->setUser($user);
-
             $place_added = true;
             $this->render('login', [
                 'message' => ['You have been successful registered! Please login.']

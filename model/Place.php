@@ -103,5 +103,15 @@ class Place
         $this->email = $email;
     }
 
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
+    public function setAddedByUser($added_by_user): void
+    {
+        $this->added_by_user = $added_by_user;
+    }
+
 
 }

@@ -14,7 +14,7 @@ class AdminController extends AppController
     public function index(): void
     {
         $user = new UserMapper();
-        $this->render('index', ['user' => $user->getUser($_SESSION['id'])]);
+        $this->render('index', ['user' => $user->getUser($_SESSION['email'])]);
     }
 
     public function users(): void

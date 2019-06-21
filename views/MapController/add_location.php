@@ -40,7 +40,7 @@
                         <i class="material-icons md-48">person</i>
                     </label>
                     <div class="col-sm-11">
-                        <input type="number" name="longtitude" class="form-control" id="inputLng" placeholder="longtitude" type="number" required/>
+                        <input type="number" name="longitude" class="form-control" id="inputLng" placeholder="longtitude" type="number" required/>
                     </div>
                 </div>
                 <div class="form-group row">

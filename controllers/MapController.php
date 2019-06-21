@@ -3,6 +3,8 @@ require_once 'Parameters.php';
 
 require_once __DIR__.'/../model/Place.php';
 require_once __DIR__.'/../model/PlaceMapper.php';
+require_once __DIR__.'/../model/User.php';
+require_once __DIR__.'/../model/UserMapper.php';
 
 class MapController extends AppController
 {
@@ -20,6 +22,9 @@ class MapController extends AppController
     public function add_location()
     {
         $mapper = new PlaceMapper();
+        $usermapper = new UserMapper();
+
+        $user = $usermapper->getUser($_SESSION['email']);
         $place = null;
         $place_added = false;
 
@@ -28,10 +33,11 @@ class MapController extends AppController
                 $_POST['name'],
                 $_POST['address'],
                 $_POST['latitude'],
-                $_POST['longtitude'],
+                $_POST['longitude'],
                 $_POST['email'],
                 $_POST['url'],
             );
+            $place->setAddedByUser($user->getId());
             $mapper->set_place($place);
 
             $place_added = true;
@@ -40,5 +46,16 @@ class MapController extends AppController
             ]);
         }
         if(!$place_added) $this->render('add_location');
+    }
+
+    public function get_places(): void
+    {
+        $place = new PlaceMapper();
+
+        header('Content-type: application/json');
+        http_response_code(200);
+
+        echo $place->get_places_created_by_user() ? json_encode($place->get_places_created_by_user()) : '';
+
     }
 }

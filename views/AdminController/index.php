@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <?php include(dirname(__DIR__).'/head.html'); ?>
 
 <body>
@@ -32,7 +31,9 @@
             </tbody>
         </table>
 
+        <?php if(isset($_SESSION) && ($_SESSION['role'] == "ROLE_ADMIN")): ?>
         <button class="btn btn-dark btn-lg" type="button" onclick="getUsers()">Get all users</button>
+        <?php endif; ?>
         <button class="btn btn-dark btn-lg" type="button" onclick="window.location = '?page=index'">Exit</button>
     </div>
 </div>
