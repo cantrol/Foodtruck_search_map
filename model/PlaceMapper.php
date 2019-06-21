@@ -12,11 +12,10 @@ class PlaceMapper
         $this->database = new Database();
     }
 
-    public function get_places()
+    public function get_all_places()
     {
         try {
             $stmt = $this->database->connect()->prepare('SELECT * FROM food_places;');
-            //$stmt->bindParam(':email', $_SESSION['id'], PDO::PARAM_STR);
             $stmt->execute();
 
             $places = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -27,7 +26,7 @@ class PlaceMapper
         }
     }
 
-    public function get_places_created_by_user()
+    public function get_places_of_user()
     {
         try {
             $stmt = $this->database->connect()->prepare('SELECT * FROM food_places WHERE added_by_user = :id;');
@@ -36,6 +35,18 @@ class PlaceMapper
 
             $places = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $places;
+        }
+        catch(PDOException $e) {
+            die();
+        }
+    }
+
+    public function deletePlace(int $id): void
+    {
+        try {
+            $stmt = $this->database->connect()->prepare('DELETE FROM food_places WHERE id = :id;');
+            $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+            $stmt->execute();
         }
         catch(PDOException $e) {
             die();

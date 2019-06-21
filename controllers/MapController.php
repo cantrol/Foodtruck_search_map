@@ -16,7 +16,7 @@ class MapController extends AppController
     public function map()
     {
         $mapper = new PlaceMapper();
-        $this->render('map', ['places' => $mapper->get_places()]);
+        $this->render('map', ['places' => $mapper->get_all_places()]);
     }
 
     public function add_location()
@@ -48,14 +48,38 @@ class MapController extends AppController
         if(!$place_added) $this->render('add_location');
     }
 
-    public function get_places(): void
+    public function get_places_of_user(): void
+    {
+        $places = new PlaceMapper();
+
+        header('Content-type: application/json');
+        http_response_code(200);
+
+        echo $places->get_places_of_user() ? json_encode($places->get_places_of_user()) : '';
+
+    }
+
+    public function get_all_places(): void
     {
         $place = new PlaceMapper();
 
         header('Content-type: application/json');
         http_response_code(200);
 
-        echo $place->get_places_created_by_user() ? json_encode($place->get_places_created_by_user()) : '';
+        echo $place->get_all_places() ? json_encode($place->get_all_places()) : '';
 
+    }
+
+    public function placeDelete(): void
+    {
+        if (!isset($_POST['id'])) {
+            http_response_code(404);
+            return;
+        }
+
+        $user = new PlaceMapper();
+        $user->deletePlace((int)$_POST['id']);
+
+        http_response_code(200);
     }
 }

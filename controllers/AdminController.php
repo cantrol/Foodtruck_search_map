@@ -35,8 +35,8 @@ class AdminController extends AppController
             return;
         }
 
-        $user = new UserMapper();
-        $user->delete((int)$_POST['id']);
+        $place = new UserMapper();
+        $place->delete((int)$_POST['id']);
 
         http_response_code(200);
     }

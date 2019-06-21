@@ -1,7 +1,6 @@
 <?php
 
 require_once 'controllers/DefaultController.php';
-require_once 'controllers/UploadController.php';
 require_once 'controllers/MapController.php';
 require_once 'controllers/AdminController.php';
 require_once 'controllers/AdminController.php';
@@ -41,13 +40,17 @@ class Routing
                 'controller' => 'MapController',
                 'action' => "add_location"
             ],
-            'get_locations' => [
+            'get_places_of_user' => [
                 'controller' => 'MapController',
-                'action' => "get_locations"
+                'action' => 'get_places_of_user'
             ],
-            'get_places' => [
+            'get_all_places' => [
                 'controller' => 'MapController',
-                'action' => 'get_places'
+                'action' => 'get_all_places'
+            ],
+            'delete_place' => [
+                'controller' => 'MapController',
+                'action' => 'placeDelete'
             ],
             'admin' => [
                 'controller' => 'AdminController',

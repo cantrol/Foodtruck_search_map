@@ -15,6 +15,10 @@
             height: 100%;
             border: 1px solid blue;
         }
+        #allData{
+            display:none;
+        }
+
     </style>
 </head>
 <body>
@@ -31,6 +35,11 @@
 
 <div class="container">
     <center><h1>Foodtruck search map</h1></center>
+    <?php
+    $plc = new PlaceMapper;
+    $allData = $plc->get_all_places();
+    $allData = json_encode($allData,true);
+    ?>
     <div id ="map"</div>
 </div>
 <p>
@@ -39,16 +48,36 @@
     <?php endif; ?>
 </p>
 
-    <?php
-        $plc = new PlaceMapper;
-        $coll = $plc->get_places();
-        print"<pre>";
-        print_r($coll);
-        print"</pre>";
-    ?>
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Type</th>
+        <th>Datetime added</th>
+        <th>Email address</th>
+        <th>Webpage</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+    </tr>
+    </tbody>
+    <tbody class="places-list">
+    </tbody>
+</table>
+
+<?php if(isset($_SESSION) && ($_SESSION['role'] == "ROLE_ADMIN")): ?>
+    <button class="btn btn-dark btn-lg" type="button" onclick="get_all_places()">Get all places</button>
+<?php endif; ?>
 
 </body>
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClgfQbPyK1A6HoUhIqVA0AJUF2IB0cAZc&callback=myMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClgfQbPyK1A6HoUhIqVA0AJUF2IB0cAZc&callback=LoadMap">
     </script>
 </html>
